@@ -11,226 +11,168 @@ interface TerminalWindowProps {
 
 function MacOSButtons() {
   return (
-    <div className="flex items-center gap-[7px]">
-      <span className="w-[13px] h-[13px] rounded-full bg-[#ff5f56] border border-[#e0443e] shadow-inner" />
-      <span className="w-[13px] h-[13px] rounded-full bg-[#ffbd2e] border border-[#dea123] shadow-inner" />
-      <span className="w-[13px] h-[13px] rounded-full bg-[#27c93f] border border-[#1aab29] shadow-inner" />
+    <div className="flex items-center gap-[8px] ml-[8px] shrink-0">
+      <span className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] border border-[#e0443e]" />
+      <span className="w-[12px] h-[12px] rounded-full bg-[#febc2e] border border-[#dea123]" />
+      <span className="w-[12px] h-[12px] rounded-full bg-[#28c840] border border-[#1aab29]" />
     </div>
   );
 }
 
 function WindowsClassicButtons() {
   return (
-    <div className="flex items-center gap-px">
-      <button type="button" className="w-[46px] h-[30px] flex items-center justify-center text-current opacity-70 hover:opacity-100 hover:bg-white/10 transition-colors" aria-label="Minimize">
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="2" y1="5" x2="8" y2="5" /></svg>
+    <div className="flex items-center h-full ml-auto">
+      <button type="button" className="w-[46px] h-full flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-colors" aria-label="Minimize">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.2"><line x1="2" y1="5" x2="8" y2="5" /></svg>
       </button>
-      <button type="button" className="w-[46px] h-[30px] flex items-center justify-center text-current opacity-70 hover:opacity-100 hover:bg-white/10 transition-colors" aria-label="Maximize">
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="1.5" y="1.5" width="7" height="7" rx="0.5" /></svg>
+      <button type="button" className="w-[46px] h-full flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-colors" aria-label="Maximize">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="1.5" y="1.5" width="7" height="7" rx="0.5" /></svg>
       </button>
-      <button type="button" className="w-[46px] h-[30px] flex items-center justify-center text-current opacity-70 hover:opacity-100 hover:bg-[#e81123]/80 transition-colors" aria-label="Close">
+      <button type="button" className="w-[46px] h-full flex items-center justify-center text-white/70 hover:text-white hover:bg-[#e81123] transition-colors" aria-label="Close">
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="2" y1="2" x2="8" y2="8" /><line x1="8" y1="2" x2="2" y2="8" /></svg>
       </button>
     </div>
   );
 }
 
-function LinuxButtons() {
+function AdwaitaButtons() {
+  const btn = 'w-[14px] h-[14px] rounded-full border flex items-center justify-center shrink-0';
   return (
-    <div className="flex items-center gap-[6px]">
-      <button type="button" className="w-[14px] h-[14px] rounded-full bg-[#e95420] border border-[#c8431a] flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity" aria-label="Close">
-        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" stroke="white" strokeWidth="1.2"><line x1="1" y1="1" x2="5" y2="5" /><line x1="5" y1="1" x2="1" y2="5" /></svg>
-      </button>
-      <button type="button" className="w-[14px] h-[14px] rounded-full bg-[#f5c211] border border-[#d9a710] opacity-80 hover:opacity-100 transition-opacity" aria-label="Minimize">
-        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" stroke="black" strokeWidth="1.2"><line x1="1" y1="3" x2="5" y2="3" /></svg>
-      </button>
-      <button type="button" className="w-[14px] h-[14px] rounded-full bg-[#87b556] border border-[#6e9643] opacity-80 hover:opacity-100 transition-opacity" aria-label="Maximize">
-        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" stroke="black" strokeWidth="1.2"><rect x="0.8" y="0.8" width="4.4" height="4.4" rx="0.5" /></svg>
-      </button>
+    <div className="flex items-center gap-[6px] shrink-0 ml-[8px]">
+      <span className={`${btn} bg-[#e95420] border-[#c8431a]`}>
+        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" stroke="white" strokeWidth="1.5"><line x1="1" y1="1" x2="5" y2="5" /><line x1="5" y1="1" x2="1" y2="5" /></svg>
+      </span>
+      <span className={`${btn} bg-[#f5c211] border-[#d9a710]`}>
+        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" stroke="black" strokeWidth="1.5"><line x1="1" y1="3" x2="5" y2="3" /></svg>
+      </span>
+      <span className={`${btn} bg-[#87b556] border-[#6e9643]`}>
+        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" stroke="black" strokeWidth="1.5"><rect x="0.8" y="0.8" width="4.4" height="4.4" rx="0.5" /></svg>
+      </span>
     </div>
   );
 }
 
-function Windows11TabBar({ showButtons }: { isDark?: boolean; windowTitle?: string; showButtons: boolean }) {
-  const barBg = '#2d2d2d';
-  const tabBg = '#1a1a1a';
-  const textClr = 'rgba(255,255,255,0.88)';
-  const muteText = 'rgba(255,255,255,0.45)';
-
+function Win11AcrylicBar({ windowTitle, showButtons }: { windowTitle: string; showButtons: boolean }) {
   return (
-    <div className="select-none" style={{ background: barBg }}>
-      <div className="flex items-center h-[48px] px-0">
-        <div className="w-12 shrink-0 flex items-center justify-center">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          </svg>
+    <div className="select-none" style={{ background: 'rgba(45,45,45,0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
+      <div className="flex items-center h-[32px] px-0">
+        <div className="w-[36px] shrink-0 flex items-center justify-center">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
         </div>
-
-        <div
-          className="flex items-center gap-0 h-[34px] px-3 min-w-0"
-          style={{
-            background: tabBg,
-            borderTopLeftRadius: '4px',
-            borderTopRightRadius: '4px',
-          }}
-        >
-          <svg className="w-4 h-4 shrink-0 mr-1.5" viewBox="0 0 24 24" fill="none" stroke={textClr} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.7">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-            <line x1="3" y1="9" x2="21" y2="9" />
-            <line x1="9" y1="3" x2="9" y2="21" />
-          </svg>
-          <span className="text-[13px] font-medium truncate" style={{ color: textClr }}>
-            Administrator: C:\Windows\s
-          </span>
-          <button type="button" className="w-5 h-5 ml-2 flex items-center justify-center rounded-sm opacity-0 group-hover:opacity-60 hover:opacity-100 hover:bg-white/10 transition-all" aria-label="Close tab">
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke={muteText} strokeWidth="1.5"><line x1="2" y1="2" x2="8" y2="8" /><line x1="8" y1="2" x2="2" y2="8" /></svg>
+        <div className="flex items-center h-[26px] px-2.5 rounded-t-md" style={{ background: '#1a1a1a' }}>
+          <svg className="w-3.5 h-3.5 shrink-0 mr-1.5" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="9" y1="3" x2="9" y2="21" /></svg>
+          <span className="text-[12px] font-medium truncate" style={{ color: 'rgba(255,255,255,0.85)' }}>{windowTitle}</span>
+          <button type="button" className="w-4 h-4 ml-2 flex items-center justify-center rounded-sm opacity-0 group-hover:opacity-60 hover:opacity-100 hover:bg-white/10" aria-label="Close tab">
+            <svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5"><line x1="2" y1="2" x2="8" y2="8" /><line x1="8" y1="2" x2="2" y2="8" /></svg>
           </button>
         </div>
-
-        <button type="button" className="w-[38px] h-[34px] flex items-center justify-center text-current opacity-50 hover:opacity-90 hover:bg-white/8 transition-colors" aria-label="New tab">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="2.5" strokeLinecap="square"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+        <button type="button" className="w-[30px] h-[26px] flex items-center justify-center text-white/40 hover:text-white/80" aria-label="New tab">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
         </button>
-        <button type="button" className="w-[30px] h-[34px] flex items-center justify-center text-current opacity-50 hover:opacity-90 hover:bg-white/8 transition-colors" aria-label="Dropdown">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="3" strokeLinecap="round"><polyline points="6 9 12 15 18 9" /></svg>
-        </button>
-
         <div className="flex-1" />
-
-        {showButtons && (
-          <div className="flex items-center h-full">
-            {[
-              {
-                svg: <svg key="min" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="rgba(255,255,255,0.75)" strokeWidth="1.2" strokeLinecap="square"><line x1="2" y1="5" x2="8" y2="5" /></svg>,
-                label: 'Minimize',
-                hover: 'hover:bg-white/10',
-              },
-              {
-                svg: <svg key="max" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="rgba(255,255,255,0.75)" strokeWidth="1.2"><rect x="1.5" y="1.5" width="7" height="7" rx="0.5" /></svg>,
-                label: 'Maximize',
-                hover: 'hover:bg-white/10',
-              },
-              {
-                svg: <svg key="close" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="rgba(255,255,255,0.75)" strokeWidth="1.5" strokeLinecap="square"><line x1="2" y1="2" x2="8" y2="8" /><line x1="8" y1="2" x2="2" y2="8" /></svg>,
-                label: 'Close',
-                hover: 'hover:bg-[#e81123]',
-              },
-            ].map((b, i) => (
-              <button
-                key={i}
-                type="button"
-                className={`w-[48px] h-full flex items-center justify-center transition-colors ${b.hover}`}
-                aria-label={b.label}
-              >
-                {b.svg}
-              </button>
-            ))}
-          </div>
-        )}
+        {showButtons && WindowsClassicButtons()}
       </div>
     </div>
   );
 }
 
-function getPlatformButtons(platform: string) {
-  if (platform === 'windows-cmd' || platform === 'windows-powershell') {
-    return <WindowsClassicButtons />;
-  }
-  if (platform === 'ubuntu-terminal' || platform === 'kali-terminal') {
-    return <LinuxButtons />;
-  }
-  return <MacOSButtons />;
+function VSCodePanel() {
+  return (
+    <div className="select-none shrink-0">
+      <div className="flex h-[35px] bg-[#2d2d2d]">
+        <div className="flex items-center px-3 gap-1.5" style={{ background: '#1e1e1e' }}>
+          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#569cd6"><rect x="3" y="3" width="18" height="18" rx="2" /><line x1="3" y1="9" x2="21" y2="9" stroke="#569cd6" strokeWidth="1" /><line x1="9" y1="3" x2="9" y2="21" stroke="#569cd6" strokeWidth="1" /></svg>
+          <span className="text-[12px] font-medium" style={{ color: 'rgba(255,255,255,0.9)' }}>TERMINAL</span>
+        </div>
+        <div className="flex items-center px-3 gap-1.5 opacity-50">
+          <svg className="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5"><circle cx="12" cy="12" r="3" /><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" /></svg>
+          <span className="text-[12px]">PROBLEMS</span>
+        </div>
+        <div className="flex items-center px-3 gap-1.5 opacity-50">
+          <span className="text-[12px]">OUTPUT</span>
+        </div>
+        <div className="flex items-center px-3 gap-1.5 opacity-50">
+          <span className="text-[12px]">DEBUG CONSOLE</span>
+        </div>
+      </div>
+      <div className="h-[22px] flex items-center text-[11px] px-3 gap-3" style={{ background: '#252526', color: 'rgba(255,255,255,0.5)' }}>
+        <span>bash</span>
+        <span className="flex-1" />
+        <span>+</span>
+        <span className="w-px h-3 bg-white/10 mx-1" />
+        <span>⚭</span>
+      </div>
+    </div>
+  );
 }
 
-function getChromeStyle(platform: string, isDark: boolean) {
+function Iterm2TabBar() {
+  return (
+    <div className="flex items-center h-[28px] px-2 gap-1.5 shrink-0 select-none" style={{ background: 'rgba(0,0,0,0.15)' }}>
+      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-t-sm" style={{ background: 'rgba(255,255,255,0.08)' }}>
+        <span className="w-[10px] h-[10px] rounded-full bg-[#ff5f57]" />
+        <span className="text-[11px] font-medium ml-1" style={{ color: 'rgba(255,255,255,0.7)' }}>zsh</span>
+      </div>
+    </div>
+  );
+}
+
+function getChromeConfig(platform: string, isDark: boolean) {
   switch (platform) {
+    case 'macos-terminal':
+    case 'iterm2':
+      return {
+        titleBar: { background: isDark ? '#2d2d2d' : '#ececec', height: 28, textColor: isDark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.5)', fontSize: 12 },
+        left: 'buttons',
+      };
     case 'windows-cmd':
+      return {
+        titleBar: { background: '#1e1e1e', height: 32, textColor: 'rgba(255,255,255,0.85)', fontSize: 12 },
+        left: 'title',
+      };
     case 'windows-powershell':
       return {
-        background: isDark ? '#0c0c0c' : '#e1e1e1',
-        borderBottom: `1px solid ${isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.1)'}`,
-        height: '30px',
-        padding: '0 0 0 12px',
+        titleBar: { background: '#012456', height: 32, textColor: 'rgba(255,255,255,0.85)', fontSize: 12 },
+        left: 'title',
       };
     case 'windows-terminal':
       return null;
     case 'ubuntu-terminal':
       return {
-        background: '#2d0922',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-        height: '34px',
-        padding: '0 12px',
+        titleBar: { background: '#2d2d2d', height: 46, textColor: 'rgba(255,255,255,0.6)', fontSize: 13 },
+        left: 'buttons',
       };
     case 'kali-terminal':
       return {
-        background: '#1a1a2e',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-        height: '32px',
-        padding: '0 10px',
+        titleBar: { background: '#1a1a2e', height: 46, textColor: 'rgba(255,255,255,0.6)', fontSize: 13 },
+        left: 'buttons',
       };
     case 'vscode-terminal':
-      return {
-        background: isDark ? '#323233' : '#e8e8e8',
-        borderBottom: `1px solid ${isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'}`,
-        height: '28px',
-        padding: '0 12px',
-      };
+      return 'vscode';
     default:
       return {
-        background: isDark ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.06)',
-        borderBottom: `1px solid ${isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'}`,
-        height: '38px',
-        padding: '0 14px',
+        titleBar: { background: isDark ? '#2d2d2d' : '#ececec', height: 28, textColor: isDark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.5)', fontSize: 12 },
+        left: 'buttons',
       };
   }
-}
-
-function getTitlePosition(platform: string) {
-  if (platform === 'windows-cmd' || platform === 'windows-powershell' || platform === 'windows-terminal') {
-    return 'left';
-  }
-  if (platform === 'vscode-terminal') {
-    return 'left';
-  }
-  return 'center';
 }
 
 function getContentFont(config: TerminalConfig) {
-  if (config.platform === 'windows-cmd' || config.platform === 'windows-powershell') {
-    return "'Consolas', 'Courier New', monospace";
-  }
-  if (config.platform === 'ubuntu-terminal') {
-    return "'Ubuntu Mono', 'JetBrains Mono', monospace";
-  }
   return config.fontFamily;
 }
 
 const TerminalWindow = forwardRef<HTMLDivElement, TerminalWindowProps>(
   ({ config, text }, ref) => {
     const {
-      backgroundColor,
-      textColor,
-      fontSize,
-      lineHeight,
-      padding,
-      borderRadius,
-      showWindowChrome,
-      showWindowButtons,
-      windowTitle,
-      terminalHeight,
-      isDarkMode,
-      supportsANSI,
-      cursorVisible,
-      cursorStyle,
-      cursorColor,
-      blinkCursor,
-      wrapLongLines,
-      platform,
+      backgroundColor, textColor, fontSize, lineHeight, padding, borderRadius,
+      showWindowChrome, showWindowButtons, windowTitle, terminalHeight,
+      isDarkMode, supportsANSI, cursorVisible, cursorStyle, cursorColor,
+      blinkCursor, wrapLongLines, platform, showLineNumbers,
     } = config;
 
     const lines = useMemo(() => text.split('\n'), [text]);
     const fontFamily = getContentFont(config);
-    const chromeStyle = getChromeStyle(platform, isDarkMode);
-    const titlePos = getTitlePosition(platform);
+    const chromeConfig = getChromeConfig(platform, isDarkMode);
 
     const renderLine = (line: string, lineIndex: number) => {
       if (supportsANSI) {
@@ -263,15 +205,10 @@ const TerminalWindow = forwardRef<HTMLDivElement, TerminalWindowProps>(
             {line}
             <span
               className={`inline-block w-[0.55em] h-[1.15em] align-middle ml-px -mb-px ${
-                cursorStyle === 'underline'
-                  ? 'border-b-2'
-                  : cursorStyle === 'bar'
-                  ? 'border-l-2'
-                  : ''
+                cursorStyle === 'underline' ? 'border-b-2' : cursorStyle === 'bar' ? 'border-l-2' : ''
               } ${blinkCursor ? 'animate-pulse' : ''}`}
               style={{
-                backgroundColor:
-                  cursorStyle === 'block' ? cursorColor : 'transparent',
+                backgroundColor: cursorStyle === 'block' ? cursorColor : 'transparent',
                 borderColor: cursorColor,
               }}
             />
@@ -282,55 +219,58 @@ const TerminalWindow = forwardRef<HTMLDivElement, TerminalWindowProps>(
       return <span key={lineIndex}>{line}</span>;
     };
 
-    const windowChrome = showWindowChrome && (
-      platform === 'windows-terminal' ? (
-        <Windows11TabBar showButtons={showWindowButtons} />
-      ) : (
+    const windowChrome = showWindowChrome && (() => {
+      if (chromeConfig === 'vscode') {
+        return <VSCodePanel />;
+      }
+      if (platform === 'windows-terminal') {
+        return <Win11AcrylicBar windowTitle={windowTitle} showButtons={showWindowButtons} />;
+      }
+      if (!chromeConfig) return null;
+
+      const { titleBar, left } = chromeConfig;
+      return (
         <div
           className="flex items-center select-none shrink-0"
           style={{
-            ...chromeStyle,
+            height: titleBar.height,
+            background: titleBar.background,
+            borderBottom: '1px solid rgba(255,255,255,0.06)',
             borderTopLeftRadius: borderRadius,
             borderTopRightRadius: borderRadius,
+            paddingLeft: platform === 'windows-cmd' || platform === 'windows-powershell' ? 12 : 0,
           }}
         >
-          {titlePos === 'left' ? (
+          {left === 'buttons' ? (
             <>
+              <div className="flex items-center shrink-0" style={{ width: 76 }}>
+                {platform === 'ubuntu-terminal' || platform === 'kali-terminal'
+                  ? <AdwaitaButtons />
+                  : <MacOSButtons />
+                }
+              </div>
               <span
-                className="text-[11px] font-medium truncate flex-1"
-                style={{
-                  color: isDarkMode
-                    ? 'rgba(255,255,255,0.65)'
-                    : 'rgba(0,0,0,0.55)',
-                }}
+                className="flex-1 text-center font-medium truncate mx-2"
+                style={{ fontSize: titleBar.fontSize, color: titleBar.textColor }}
               >
                 {windowTitle}
               </span>
-              {showWindowButtons && getPlatformButtons(platform)}
+              <div className="w-[76px] shrink-0" />
             </>
           ) : (
             <>
-              {showWindowButtons && (
-                <div className="flex items-center shrink-0 w-[68px]">
-                  {getPlatformButtons(platform)}
-                </div>
-              )}
               <span
-                className="flex-1 text-center text-[12px] font-medium truncate mx-2"
-                style={{
-                  color: isDarkMode
-                    ? 'rgba(255,255,255,0.55)'
-                    : 'rgba(0,0,0,0.5)',
-                }}
+                className="flex-1 font-medium truncate"
+                style={{ fontSize: titleBar.fontSize, color: titleBar.textColor }}
               >
                 {windowTitle}
               </span>
-              {showWindowButtons && <div className="w-[68px] shrink-0" />}
+              {showWindowButtons && <WindowsClassicButtons />}
             </>
           )}
         </div>
-      )
-    );
+      );
+    })();
 
     const shadow = showWindowChrome
       ? config.shadowIntensity > 0
@@ -354,18 +294,30 @@ const TerminalWindow = forwardRef<HTMLDivElement, TerminalWindowProps>(
         }}
       >
         {windowChrome}
+        {platform === 'iterm2' && showWindowChrome && <Iterm2TabBar />}
         <div
           className="overflow-auto"
           style={{
             padding: `${padding}px`,
-            maxHeight: `${terminalHeight}px`,
+            maxHeight: terminalHeight > 0 ? `${terminalHeight}px` : 'none',
             whiteSpace: wrapLongLines ? 'pre-wrap' : 'pre',
             wordBreak: wrapLongLines ? 'break-all' : 'normal',
           }}
         >
           <div className="leading-relaxed" style={{ lineHeight: `${lineHeight}` }}>
             {lines.map((line, i) => (
-              <div key={i} className="whitespace-pre-wrap" style={{ minHeight: `${fontSize * lineHeight}px` }}>
+              <div key={i} className="whitespace-pre-wrap flex" style={{ minHeight: `${fontSize * lineHeight}px` }}>
+                {showLineNumbers && (
+                  <span
+                    className="text-right shrink-0 select-none mr-3"
+                    style={{
+                      width: `${String(lines.length).length * 0.6 + 0.8}em`,
+                      color: isDarkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)',
+                    }}
+                  >
+                    {i + 1}
+                  </span>
+                )}
                 {renderLine(line, i)}
               </div>
             ))}

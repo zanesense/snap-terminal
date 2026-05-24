@@ -26,14 +26,12 @@ export default function FontSettingsPanel({ config, onChange }: FontSettingsPane
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="text-[13px] font-medium text-body">Font Settings</div>
-
       <div className="flex flex-col gap-1.5">
-        <label className="text-[13px] font-medium text-body">Font Family</label>
+        <label className="text-xs font-medium text-body">Font Family</label>
         <select
           value={config.fontFamily}
           onChange={(e) => update({ fontFamily: e.target.value })}
-          className="w-full h-9 px-2.5 text-[13px] bg-canvas border border-hairline rounded-sm text-ink focus:outline-none focus:border-hairline-strong"
+          className="w-full h-9 px-2.5 text-xs bg-canvas border border-hairline rounded-md text-ink focus:outline-none focus:border-hairline-strong"
         >
           {FONT_OPTIONS.map((font) => (
             <option key={font.value} value={font.value}>
@@ -44,7 +42,7 @@ export default function FontSettingsPanel({ config, onChange }: FontSettingsPane
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-[13px] font-medium text-body">
+        <label className="text-xs font-medium text-body">
           Font Size: <span className="font-mono text-mute">{config.fontSize}px</span>
         </label>
         <input
@@ -63,7 +61,7 @@ export default function FontSettingsPanel({ config, onChange }: FontSettingsPane
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-[13px] font-medium text-body">
+        <label className="text-xs font-medium text-body">
           Line Height: <span className="font-mono text-mute">{config.lineHeight.toFixed(1)}</span>
         </label>
         <input

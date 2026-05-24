@@ -23,12 +23,37 @@ function downloadBlob(blob: Blob, filename: string): void {
   URL.revokeObjectURL(url);
 }
 
+function getSafeStyleSheets(): CSSStyleSheet[] {
+  const sheets: CSSStyleSheet[] = [];
+  for (let i = 0; i < document.styleSheets.length; i++) {
+    try {
+      document.styleSheets[i].cssRules;
+      sheets.push(document.styleSheets[i] as CSSStyleSheet);
+    } catch {}
+  }
+  return sheets;
+}
+
+function captureOptions(extra: Record<string, unknown> = {}): Record<string, unknown> {
+  return { ...extra, styleSheets: getSafeStyleSheets() };
+}
+
+async function captureWithFonts(
+  element: HTMLElement,
+  captureFn: () => Promise<string | Blob | undefined>
+): Promise<string | Blob | undefined> {
+  await document.fonts.ready;
+  return captureFn();
+}
+
 export async function exportAsPNG(
   element: HTMLElement,
   filename: string = 'terminal-screenshot',
   scale: number = 2
 ): Promise<void> {
-  const dataUrl = await toPng(element, { pixelRatio: scale });
+  const dataUrl = await captureWithFonts(element, () =>
+    toPng(element, captureOptions({ pixelRatio: scale }))
+  ) as string;
   const img = await loadImage(dataUrl);
   if (img.height <= MAX_PAGE_HEIGHT) {
     downloadBlob(await (await fetch(dataUrl)).blob(), `${filename}.png`);
@@ -56,7 +81,9 @@ export async function exportAsJPEG(
   scale: number = 2,
   quality: number = 0.95
 ): Promise<void> {
-  const dataUrl = await toJpeg(element, { quality, pixelRatio: scale });
+  const dataUrl = await captureWithFonts(element, () =>
+    toJpeg(element, captureOptions({ quality, pixelRatio: scale }))
+  ) as string;
   const img = await loadImage(dataUrl);
   if (img.height <= MAX_PAGE_HEIGHT) {
     downloadBlob(await (await fetch(dataUrl)).blob(), `${filename}.jpg`);
@@ -83,7 +110,9 @@ export async function exportAsWebP(
   filename: string = 'terminal-screenshot',
   scale: number = 2
 ): Promise<void> {
-  const dataUrl = await toPng(element, { pixelRatio: scale });
+  const dataUrl = await captureWithFonts(element, () =>
+    toPng(element, captureOptions({ pixelRatio: scale }))
+  ) as string;
   const img = await loadImage(dataUrl);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d')!;
@@ -113,6 +142,7 @@ export async function exportAsSVG(
   element: HTMLElement,
   filename: string = 'terminal-screenshot'
 ): Promise<void> {
+  await document.fonts.ready;
   const rect = element.getBoundingClientRect();
   const clone = element.cloneNode(true) as HTMLElement;
   const serializer = new XMLSerializer();
@@ -132,14 +162,15 @@ export async function exportAsSVG(
 }
 
 export async function copyToClipboard(element: HTMLElement): Promise<void> {
+  await document.fonts.ready;
   try {
-    const blob = await toBlob(element, { pixelRatio: 2 });
+    const blob = await toBlob(element, captureOptions({ pixelRatio: 2 }));
     if (blob) {
       await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
       return;
     }
   } catch {}
-  const dataUrl = await toPng(element, { pixelRatio: 2 });
+  const dataUrl = await toPng(element, captureOptions({ pixelRatio: 2 }));
   const blob = await (await fetch(dataUrl)).blob();
   await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
 }

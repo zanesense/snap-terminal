@@ -111,10 +111,4 @@ export function parseANSI(text: string, isDark = true): ANSISegment[] {
   return segments;
 }
 
-export function stripANSI(text: string): string {
-  return text.replace(/\x1b\[[\d;]*m/g, '');
-}
 
-export function hasANSI(text: string): boolean {
-  return /\x1b\[[\d;]*m/.test(text);
-}

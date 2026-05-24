@@ -11,8 +11,6 @@ export type Platform =
 
 export type CursorStyle = 'block' | 'underline' | 'bar' | 'none';
 export type ExportFormat = 'png' | 'jpg' | 'webp' | 'svg';
-export type LineType = 'input' | 'output' | 'error' | 'info';
-
 export interface TerminalConfig {
   platform: Platform;
   showWindowChrome: boolean;
@@ -28,7 +26,6 @@ export interface TerminalConfig {
   padding: number;
   borderRadius: number;
   shadowIntensity: number;
-  backgroundTransparency: number;
   cursorStyle: CursorStyle;
   cursorVisible: boolean;
   cursorColor: string;
@@ -38,12 +35,10 @@ export interface TerminalConfig {
   watermarkEnabled: boolean;
   watermarkText: string;
   backgroundCanvasColor: string;
-  syntaxHighlighting: boolean;
   supportsANSI: boolean;
   isDarkMode: boolean;
   exportScale: number;
   exportFormat: ExportFormat;
-  transparentBackground: boolean;
   wrapLongLines: boolean;
   showLineNumbers: boolean;
 }
@@ -110,7 +105,6 @@ export const DEFAULT_CONFIG: TerminalConfig = {
   padding: 24,
   borderRadius: 10,
   shadowIntensity: 30,
-  backgroundTransparency: 100,
   cursorStyle: 'block',
   cursorVisible: true,
   cursorColor: '#cdd6f4',
@@ -119,13 +113,11 @@ export const DEFAULT_CONFIG: TerminalConfig = {
   customPrompt: 'user@machine:~$',
   watermarkEnabled: false,
   watermarkText: 'snap-terminal.app',
-  backgroundCanvasColor: '#fafafa',
-  syntaxHighlighting: true,
+  backgroundCanvasColor: '#000',
   supportsANSI: true,
   isDarkMode: true,
   exportScale: 2,
   exportFormat: 'png',
-  transparentBackground: false,
   wrapLongLines: true,
   showLineNumbers: false,
 };

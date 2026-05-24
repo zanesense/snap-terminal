@@ -12,14 +12,17 @@
   --color-canvas-soft-2: #f5f5f5;
   --color-link: #0070f3;
   --color-link-deep: #0761d1;
+  --color-link-bg-soft: #d3e5ff;
   --color-success: #0070f3;
   --color-error: #ee0000;
   --color-error-soft: #f7d4d6;
+  --color-error-deep: #c50000;
   --color-warning: #f5a623;
+  --color-warning-soft: #ffefcf;
+  --color-warning-deep: #ab570a;
   --color-violet: #7928ca;
   --color-cyan: #50e3c2;
   --color-highlight-pink: #ff0080;
-  --color-highlight-magenta: #eb367f;
 
   --color-gradient-develop-start: #007cf0;
   --color-gradient-develop-end: #00dfd8;
@@ -28,26 +31,20 @@
   --color-gradient-ship-start: #ff4d4d;
   --color-gradient-ship-end: #f9cb28;
 
-  --font-sans: Geist, Inter, system-ui, -apple-system, sans-serif;
-  --font-mono: Geist Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --color-selection-bg: #171717;
+  --color-selection-fg: #f2f2f2;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
+  --radius-pill-sm: 64px;
   --radius-pill: 100px;
-
-  --spacing-xxs: 4px;
-  --spacing-xs: 8px;
-  --spacing-sm: 12px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-2xl: 40px;
-  --spacing-3xl: 48px;
-  --spacing-4xl: 64px;
-  --spacing-5xl: 96px;
+  --radius-full: 9999px;
 }
 
 @layer base {
@@ -59,13 +56,16 @@
     background: var(--color-canvas-soft);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.28px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background: var(--color-ink);
-    color: var(--color-on-ink);
+    background: var(--color-selection-bg);
+    color: var(--color-selection-fg);
   }
 
   ::-webkit-scrollbar {
@@ -78,46 +78,55 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--color-hairline-strong);
+    background: var(--color-hairline);
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-mute);
+    background: var(--color-hairline-strong);
   }
 }
 
 @layer utilities {
   .shadow-card {
     box-shadow:
-      0px 1px 1px rgba(0, 0, 0, 0.02),
-      0px 2px 2px rgba(0, 0, 0, 0.04),
-      0px 0px 0px 1px rgba(0, 0, 0, 0.04);
+      0 0 0 1px rgba(0,0,0,0.08),
+      0px 1px 1px rgba(0,0,0,0.02),
+      0px 2px 2px rgba(0,0,0,0.04);
   }
 
   .shadow-elevated {
     box-shadow:
-      0px 2px 2px rgba(0, 0, 0, 0.04),
-      0px 8px 16px -4px rgba(0, 0, 0, 0.04),
-      0px 0px 0px 1px rgba(0, 0, 0, 0.04);
+      0 0 0 1px rgba(0,0,0,0.08),
+      0px 2px 2px rgba(0,0,0,0.04),
+      0px 8px 8px -8px rgba(0,0,0,0.06);
+  }
+
+  .shadow-float {
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.08),
+      0px 2px 2px rgba(0,0,0,0.04),
+      0px 8px 16px -4px rgba(0,0,0,0.06);
   }
 
   .shadow-modal {
     box-shadow:
-      0px 1px 1px rgba(0, 0, 0, 0.02),
-      0px 8px 16px -4px rgba(0, 0, 0, 0.04),
-      0px 24px 32px -8px rgba(0, 0, 0, 0.06),
-      0px 0px 0px 1px rgba(0, 0, 0, 0.04);
+      0 0 0 1px rgba(0,0,0,0.08),
+      0px 1px 1px rgba(0,0,0,0.02),
+      0px 8px 16px -4px rgba(0,0,0,0.06),
+      0px 24px 32px -8px rgba(0,0,0,0.08);
+  }
+
+  .bg-dot-grid {
+    background-image: radial-gradient(circle, var(--color-hairline) 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
   }
 
   .mesh-gradient {
-    background: linear-gradient(
-      135deg,
-      #007cf0 0%,
-      #00dfd8 25%,
-      #7928ca 50%,
-      #ff0080 75%,
-      #ff4d4d 100%
-    );
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 0%, rgba(0,124,240,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 70% 10%, rgba(121,40,202,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 40% at 50% 30%, rgba(0,223,216,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 30% at 80% 40%, rgba(255,0,128,0.15) 0%, transparent 40%);
   }
 }

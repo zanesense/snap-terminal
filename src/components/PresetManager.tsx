@@ -112,16 +112,14 @@ export default function PresetManager({ config, onChange }: PresetManagerProps) 
   }, [onChange]);
 
   return (
-    <div className="flex flex-col gap-3 p-4 bg-canvas border border-hairline rounded-sm">
-      <div className="text-[13px] font-medium text-body">Presets & Themes</div>
-
+    <div className="flex flex-col gap-3">
       <div className="flex flex-wrap gap-1.5">
         {THEME_PRESETS.map((theme) => (
           <button
             key={theme.id}
             type="button"
             onClick={() => applyThemePreset(theme.id)}
-            className="px-2.5 py-1 text-[11px] rounded-full border border-hairline text-body hover:border-hairline-strong hover:text-ink transition-colors"
+            className="h-7 px-2.5 text-[11px] rounded-md border border-hairline text-body hover:border-hairline-strong hover:text-ink transition-colors"
           >
             {theme.name}
           </button>
@@ -130,83 +128,86 @@ export default function PresetManager({ config, onChange }: PresetManagerProps) 
 
       {presets.length > 0 && (
         <div className="flex flex-col gap-1">
-          <div className="text-[11px] text-mute mt-1">Saved Presets</div>
+          <div className="text-xs text-mute font-medium mt-1">Saved Presets</div>
           {presets.map((preset) => (
             <div
               key={preset.id}
-              className="flex items-center justify-between py-1.5 px-2 rounded-sm hover:bg-canvas-soft group"
+              className="flex items-center justify-between h-8 px-2 rounded-md hover:bg-canvas-soft group"
             >
               <button
                 type="button"
                 onClick={() => loadPreset(preset)}
-                className="text-[13px] text-body hover:text-ink text-left flex-1"
+                className="text-xs text-body hover:text-ink text-left flex-1"
               >
                 {preset.name}
               </button>
               <button
                 type="button"
                 onClick={() => deletePreset(preset.id)}
-                className="opacity-0 group-hover:opacity-100 text-[11px] text-mute hover:text-error transition-all"
+                className="opacity-0 group-hover:opacity-100 text-xs text-mute hover:text-error transition-all"
               >
-                Delete
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                </svg>
               </button>
             </div>
           ))}
         </div>
       )}
 
-      <div className="flex gap-1.5 mt-1">
+      <div className="flex gap-1.5">
         <button
           type="button"
           onClick={() => setShowSaveDialog(!showSaveDialog)}
-          className="flex-1 py-1.5 text-[12px] rounded-sm border border-hairline text-body hover:border-hairline-strong transition-colors"
+          className="flex-1 h-7 text-xs rounded-md border border-hairline text-body hover:border-hairline-strong hover:text-ink transition-colors"
         >
-          Save Preset
+          Save
         </button>
         <button
           type="button"
           onClick={importConfig}
-          className="flex-1 py-1.5 text-[12px] rounded-sm border border-hairline text-body hover:border-hairline-strong transition-colors"
+          className="flex-1 h-7 text-xs rounded-md border border-hairline text-body hover:border-hairline-strong hover:text-ink transition-colors"
         >
           Import
         </button>
         <button
           type="button"
           onClick={exportConfig}
-          className="flex-1 py-1.5 text-[12px] rounded-sm border border-hairline text-body hover:border-hairline-strong transition-colors"
+          className="flex-1 h-7 text-xs rounded-md border border-hairline text-body hover:border-hairline-strong hover:text-ink transition-colors"
         >
           Export
         </button>
         <button
           type="button"
           onClick={shareConfig}
-          className="flex-1 py-1.5 text-[12px] rounded-sm border border-hairline text-body hover:border-hairline-strong transition-colors"
+          className="flex-1 h-7 text-xs rounded-md border border-hairline text-body hover:border-hairline-strong hover:text-ink transition-colors"
         >
           Share
         </button>
         <button
           type="button"
           onClick={resetConfig}
-          className="py-1.5 px-2 text-[12px] rounded-sm border border-error/30 text-error hover:bg-error-soft transition-colors"
+          className="h-7 px-2 text-xs rounded-md border border-error/30 text-error hover:bg-error-soft transition-colors"
         >
           Reset
         </button>
       </div>
 
       {showSaveDialog && (
-        <div className="flex gap-1.5 items-center mt-1">
+        <div className="flex gap-1.5 items-center">
           <input
             type="text"
             value={presetName}
             onChange={(e) => setPresetName(e.target.value)}
             placeholder="Preset name..."
-            className="flex-1 h-8 px-2 text-[12px] bg-canvas border border-hairline rounded-sm text-ink focus:outline-none focus:border-hairline-strong"
+            className="flex-1 h-8 px-2 text-xs bg-canvas border border-hairline rounded-md text-ink focus:outline-none focus:border-hairline-strong"
             onKeyDown={(e) => e.key === 'Enter' && saveCurrentAsPreset()}
           />
           <button
             type="button"
             onClick={saveCurrentAsPreset}
-            className="h-8 px-3 text-[12px] font-medium bg-ink text-on-ink rounded-full hover:opacity-90"
+            className="h-8 px-3 text-xs font-medium text-on-ink bg-ink rounded-md hover:opacity-90 transition-opacity"
           >
             Save
           </button>

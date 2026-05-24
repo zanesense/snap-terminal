@@ -28,7 +28,7 @@ export default function ColorPickerControl({ label, value, onChange }: ColorPick
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-[13px] font-medium text-body">{label}</label>
+      <label className="text-xs font-medium text-body">{label}</label>
       <div className="relative flex items-center gap-2">
         <button
           type="button"
@@ -36,7 +36,7 @@ export default function ColorPickerControl({ label, value, onChange }: ColorPick
             setIsOpen(!isOpen);
             inputRef.current?.click();
           }}
-          className="shrink-0 w-9 h-9 rounded-sm border border-hairline cursor-pointer transition-transform hover:scale-105"
+          className="shrink-0 w-9 h-9 rounded-md border border-hairline cursor-pointer transition-transform hover:scale-105"
           style={{ backgroundColor: value }}
           aria-label={`Pick color for ${label}`}
         />
@@ -48,9 +48,9 @@ export default function ColorPickerControl({ label, value, onChange }: ColorPick
           className="sr-only"
           aria-label={`Color picker for ${label}`}
         />
-        <span className="font-mono text-[12px] text-mute">{value}</span>
+        <span className="font-mono text-xs text-mute">{value}</span>
         {isOpen && (
-          <div className="absolute top-full left-0 mt-2 p-2 bg-canvas border border-hairline rounded-md shadow-modal z-50 grid grid-cols-5 gap-1.5">
+          <div className="absolute top-full left-0 mt-2 p-2 bg-canvas border border-hairline rounded-lg shadow-modal z-50 grid grid-cols-5 gap-1.5">
             {presetColors.map((color) => (
               <button
                 key={color}
@@ -59,7 +59,7 @@ export default function ColorPickerControl({ label, value, onChange }: ColorPick
                   onChange(color);
                   setIsOpen(false);
                 }}
-                className="w-7 h-7 rounded-sm border border-hairline cursor-pointer hover:scale-110 transition-transform"
+                className="w-7 h-7 rounded-md border border-hairline cursor-pointer hover:scale-110 transition-transform"
                 style={{ backgroundColor: color }}
                 aria-label={`Color ${color}`}
               />
